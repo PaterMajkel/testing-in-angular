@@ -14,13 +14,13 @@
 <app-add-item (addItemInParent)="add($event)"></app-add-item>
 
 <p>{{ calculateValue() | currency: 'PLN':'zł' }}</p>
-<p>
+<p id="eu">
   In euro: {{ calculateValue() / 4.26 | currency: 'EUR':'symbol':'':'en' }} or
   {{ calculateValue() / 4.26 | currency: 'EUR' }}
 </p>
 
-<p>{{ calculateValue() | testExtCurrency: ',':'zł' }}</p>
-<p>In euro: {{ calculateValue() / 4.26 | testExtCurrency: '.':'euro' }}</p>
+<p class="test">{{ calculateValue() | testExtCurrency: ',':'zł' }}</p>
+<p id="eu2">In euro: {{ calculateValue() / 4.26 | testExtCurrency: '.':'euro' }}</p>
 
 
-<p>{{ dateOfShopping | plDate }}</p>
+<p id="date">{{ dateOfShopping | plDate }}</p>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item, items } from '../item';
 import { ItemsService } from '../items.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
