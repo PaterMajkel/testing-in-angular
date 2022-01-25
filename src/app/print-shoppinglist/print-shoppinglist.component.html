@@ -1,0 +1,16 @@
+<h2 appFormatTitle font-color="blue">{{ title }}</h2>
+
+<h2>{{ 'date of shopping' | titlePL }} {{ dateOfShopping | date }}</h2>
+
+<ol>
+  <li
+    *ngFor="let item of items; index as i"
+    (click)="doClick(i)"
+    [class.selected]="i === el_hover"
+    (mouseover)="doHover(i)"
+    appAllergen
+    [color]="color"
+  >
+    {{ item.name }}
+  </li>
+</ol>

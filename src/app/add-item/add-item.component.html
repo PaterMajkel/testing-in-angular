@@ -1,0 +1,58 @@
+Add new item:
+<form #f="ngForm" (ngSubmit)="verifyData(f.value)">
+  Name:
+  <input
+    type="text"
+    name="itemName"
+    [(ngModel)]="new_item"
+    #itemName="ngModel"
+    ngModel
+    required
+    minlength="3"
+    pattern="[a-z]*"
+  />
+  <div
+    *ngIf="
+      (itemName.invalid && itemName.touched) ||
+      (itemName.invalid && itemName.pristine)
+    "
+  >
+    <div *ngIf="itemName.errors?.[ 'required'] " style="color: red ">
+      *Item's name required!
+    </div>
+    <div *ngIf="itemName.errors?.[ 'minlength'] " style="color: red ">
+      Item's name should have at least 3 letters!
+    </div>
+    <div *ngIf="itemName.errors?.['pattern']" style="color: red">
+      Item's name can only be lowercase!
+    </div>
+  </div>
+  Price:
+  <input
+    type="number"
+    name="itemPrice"
+    #itemPrice="ngModel"
+    ngModel
+    required
+    appMinLengthValidator
+    maxVal="20"
+  />
+  <div *ngIf="itemPrice.invalid">
+    <div *ngIf=" itemPrice.errors?.[ 'required'] " style="color: red ">
+      *Item's price required!
+    </div>
+    <div
+      *ngIf="itemPrice.errors?.[ 'appMinLengthValidator']"
+      style="color: red "
+    >
+      Item's price is too high
+    </div>
+  </div>
+  <button [hidden]="f.invalid" type="submit">Add</button>
+</form>
+<p>{{ f.value | json }}</p>
+<p>{{ f.valid | json }}</p>
+<p>{{ itemName.value | json }}</p>
+<p>{{ itemName.touched | json }}</p>
+<p>{{ itemName.errors | json }}</p>
+<p>{{ itemPrice.errors | json }}</p>

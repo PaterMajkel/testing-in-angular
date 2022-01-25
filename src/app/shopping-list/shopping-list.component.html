@@ -1,0 +1,26 @@
+<app-print-shoppinglist
+  title="Urgent List"
+  [dateOfShopping]="formatDate()"
+  [items]="items"
+  (doClickInParent)="doClick($event)"
+></app-print-shoppinglist>
+<div *ngIf="el_clicked > -1">
+  <app-edit-item
+    [el2edit]="items[el_clicked]"
+    (doEditInParent)="finishEdit($event)"
+  ></app-edit-item>
+</div>
+
+<app-add-item (addItemInParent)="add($event)"></app-add-item>
+
+<p>{{ calculateValue() | currency: 'PLN':'zł' }}</p>
+<p>
+  In euro: {{ calculateValue() / 4.26 | currency: 'EUR':'symbol':'':'en' }} or
+  {{ calculateValue() / 4.26 | currency: 'EUR' }}
+</p>
+
+<p>{{ calculateValue() | testExtCurrency: ',':'zł' }}</p>
+<p>In euro: {{ calculateValue() / 4.26 | testExtCurrency: '.':'euro' }}</p>
+
+
+<p>{{ dateOfShopping | plDate }}</p>

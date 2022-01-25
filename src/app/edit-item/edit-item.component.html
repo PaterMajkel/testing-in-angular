@@ -1,0 +1,27 @@
+<div>
+  Edit data:
+  <div>
+    Two-way binding: Name: <input [(ngModel)]="el2edit.name" />Price:<input
+      [(ngModel)]="el2edit.price"
+      type="number"
+    /><button (click)="doEdit()">Save</button>
+  </div>
+  <div>
+    Template-driven form:
+    <form #f="ngForm" (ngSubmit)="verifyData(f.value)">
+      Name:
+      <input type="text" name="itemName" [(ngModel)]="edited.name" #itemName />
+      Price:
+      <input
+        type="number"
+        name="itemPriceEdit"
+        [(ngModel)]="edited.price"
+        #itemPrice
+      />
+
+      <button type=" submit ">Save</button>
+    </form>
+  </div>
+</div>
+<p>{{ f.value | json }}</p>
+<p>{{ itemName.value | json }}</p>
